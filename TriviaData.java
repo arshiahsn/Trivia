@@ -1,41 +1,49 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class TriviaData
 {
-	private ArrayList<TriviaQuestion> data;
+	private List<TriviaQuestion> data;
+
+	public List<TriviaQuestion> getData() {
+		return data;
+	}
+
+	public void setData(List<TriviaQuestion> data) {
+		this.data = data;
+	}
+
 
 	public TriviaData()
 	{
 		data = new ArrayList<TriviaQuestion>();
 	}
 
-	public void addQuestion(String q, String a, int v, int t)
+	public void addTrueFalseQuestion(String _question, String _answer, int _value)
 	{
-		TriviaQuestion question = new TriviaQuestion(q,a,v,t);
+		TriviaQuestion question = new TrueFalseQuestion(_question, _answer, _value);
+		data.add(question);
+	}
+
+	public void addFreeFormQuestion(String _question, String _answer, int _value)
+	{
+		TriviaQuestion question = new FreeFormQuestion(_question, _answer, _value);
 		data.add(question);
 	}
 
 	public void showQuestion(int index)
 	{
-		TriviaQuestion q = data.get(index);
-		System.out.println("Question " + (index +1) + ".  " + q.value + " points.");
-		if (q.type == TriviaQuestion.TRUEFALSE)
-		{
-			System.out.println(q.question);
-			System.out.println("Enter 'T' for true or 'F' for false.");
-		}
-		else if (q.type == TriviaQuestion.FREEFORM)
-		{
-			System.out.println(q.question);
-		}
+		TriviaQuestion _question = getData().get(index);
+		System.out.println("Question " + (index +1) + ".  " + _question.getValue() + " points.");
+		_question.printQuestion();
 	}
 	public int numQuestions()
 	{
-		return data.size();
+		return getData().size();
 	}
 
 	public TriviaQuestion getQuestion(int index)
 	{
-		return data.get(index);
+		return getData().get(index);
 	}
 }

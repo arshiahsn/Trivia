@@ -1,28 +1,48 @@
 
 
-public class TriviaQuestion
+public abstract class TriviaQuestion
 {
-	public static final int TRUEFALSE = 0;
-	public static final int FREEFORM = 1;
+	//public static final int TRUEFALSE = 0;
+	//public static final int FREEFORM = 1;
 
-	public String question;		// Actual question
-	public String answer;		// Answer to question
-	public int value;			// Point value of question
-	public int type;			// Question type, TRUEFALSE or FREEFORM
+	private String question;		// Actual question
+	private String answer;		// Answer to question
+	private int value;			// Point value of question
+	//public int type;			// Question type, TRUEFALSE or FREEFORM
 
-	public TriviaQuestion()
-	{
-		question = "";
-		answer = "";
-		value = 0;
-		type = FREEFORM;
+
+	public String getQuestion() {
+		return question;
 	}
 
-	public TriviaQuestion(String q, String a, int v, int t)
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public TriviaQuestion(String _question, String _answer, int _value)
 	{
-		question = q;
-		answer = a;
-		value = v;
-		type = t;
+		question = _question;
+		value = _value;
+		answer = _answer;
+	}
+
+	public void printQuestion(){
+		System.out.println(getQuestion());
 	}
 }
